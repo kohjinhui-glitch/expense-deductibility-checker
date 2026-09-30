@@ -1,0 +1,5 @@
+{
+  "framework": "container",
+  "handle": "sbd-svcd/expense-checker",
+  "port": 3000
+}

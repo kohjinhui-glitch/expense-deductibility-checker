@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1F4C8E">
+  <meta name="color-scheme" content="light">
+  <title>Business Expense Deductibility Checker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="accent-bar" aria-hidden="true"></div>
+
+  <main class="container">
+    <header class="page-header">
+      <img src="logo.png" alt="Inland Revenue Authority of Singapore" class="logo">
+      <h1>Business Expense Deductibility Checker</h1>
+    </header>
+
+    <noscript>
+      <div class="error" role="alert">
+        This tool requires JavaScript. Please enable JavaScript in your browser to look up expense deductibility.
+      </div>
+    </noscript>
+
+    <details class="info-box" open>
+      <summary>
+        What makes a business expense deductible?
+        <svg class="chevron" width="16" height="16" viewBox="0 0 20 20" aria-hidden="true">
+          <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+                d="M6 8l4 4 4-4"/>
+        </svg>
+      </summary>
+      <div class="info-box-body">
+        <p>Generally, deductible business expenses are those 'wholly and exclusively incurred in the production of income'. In other words, they must satisfy all these conditions:</p>
+        <ul>
+          <li>The expenses are solely incurred in the production of income.</li>
+          <li>The expenses must be incurred. It is considered incurred when the legal liability to pay arises, regardless of whether the actual payment has been made.</li>
+          <li>The expenses are revenue in nature, and not capital expenses. Revenue expenses are generally costs incurred in the day-to-day operations of a business to generate revenue (such as salaries, rent, and utilities), while capital expenses are investments in the business that are expected to provide long-term benefits (such as acquisition of fixed assets).</li>
+          <li>The expenses are not prohibited from deduction under the Income Tax Act 1947.</li>
+        </ul>
+      </div>
+    </details>
+
+    <p class="action-hint">Search or browse to see whether a business expense is tax-deductible.</p>
+
+    <section class="search-section" aria-label="Search expenses">
+      <label for="search" class="visually-hidden">Search expenses</label>
+      <div class="search-wrapper">
+        <svg class="search-icon" viewBox="0 0 20 20" aria-hidden="true">
+          <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                d="M9 3.5a5.5 5.5 0 1 0 3.5 9.7l3.4 3.3M9 3.5a5.5 5.5 0 1 1-3.5 9.7"/>
+        </svg>
+        <input
+          type="search"
+          id="search"
+          placeholder="Loading…"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
+          role="combobox"
+          aria-haspopup="listbox"
+          aria-controls="searchResults"
+          aria-autocomplete="list"
+          aria-expanded="false"
+          disabled
+        >
+        <button type="button" id="clearSearch" class="clear-search" aria-label="Clear search" hidden>
+          <svg viewBox="0 0 20 20" aria-hidden="true">
+            <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  d="M5 5l10 10M15 5L5 15"/>
+          </svg>
+        </button>
+      </div>
+      <ul id="searchResults" class="search-results" role="listbox" hidden></ul>
+    </section>
+
+    <details class="browse-section">
+      <summary>
+        <span>Or browse by expense type</span>
+        <svg class="chevron" viewBox="0 0 20 20" aria-hidden="true">
+          <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+                d="M6 8l4 4 4-4"/>
+        </svg>
+      </summary>
+      <div class="controls">
+        <div class="field">
+          <label for="category">Type of expense</label>
+          <select id="category" disabled>
+            <option value="">Loading…</option>
+          </select>
+        </div>
+      </div>
+    </details>
+
+    <section id="result" class="result" aria-live="polite" aria-busy="true">
+      <p class="placeholder">Loading…</p>
+    </section>
+
+    <div class="actions">
+      <button type="button" id="resetBtn" class="reset-btn" hidden>
+        <svg viewBox="0 0 20 20" aria-hidden="true">
+          <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"
+                d="M4 10a6 6 0 1 0 1.8-4.2L4 7.5M4 4v3.5h3.5"/>
+        </svg>
+        Start over
+      </button>
+    </div>
+
+    <div id="error" class="error" role="alert" hidden></div>
+
+    <footer class="site-footer">
+      <p class="disclaimer">
+        This tool is for general understanding and is not meant to comprehensively
+        address all possible issues that arise. The application of tax treatment
+        depends on the totality of facts and circumstances of each case.
+      </p>
+      <p id="lastUpdated" class="last-updated"></p>
+    </footer>
+  </main>
+
+  <script src="app.js?v=20260723" defer></script>
+</body>
+</html>
